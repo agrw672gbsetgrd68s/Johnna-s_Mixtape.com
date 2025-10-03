@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Johnna's Teenage Mixtape</title>
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
+</head>
+<body style="background: #0a0a0a url('Background.jpg') no-repeat center center fixed; background-size: cover; font-family: 'UnifrakturCook', 'Roboto Mono', Tahoma, Verdana, Arial, sans-serif; color: #ffe0f7; zoom: 0.75;">
+    <div style="display: flex; justify-content: flex-start; align-items: flex-start; gap: 32px; width: 100vw; min-height: 100vh;">
+        <!-- 1st Browser Tab -->
+        <div style="width: 100vw; margin: 40px 0 40px 40px; border: 2px solid #ff69b4; box-shadow: 0 0 24px #ff69b4; background: #181818;">
+            <!-- Title Bar -->
+            <div style="background: linear-gradient(to bottom, #ff69b4 0%, #c2185b 100%); height: 40px; border-bottom: 2px solid #ff69b4; position: relative; color: #fff; display: flex; align-items: center; font-family: 'UnifrakturCook', serif;">
+                <img src="Explorericon.jpg" style="width: 24px; height: 24px; margin: 0 12px;">
+                <span style="font-weight: bold; font-size: 22px; flex: 1; letter-spacing: 2px; text-shadow: 2px 2px 8px #c2185b;">Johnna's Teenage Mixtape</span>
+                <div style="display: flex; gap: 4px; margin-right: 12px;">
+                    <button title="Minimize" style="width: 24px; height: 24px; background: #4b4b4b; border: 1px solid #ffffff; border-radius: 2px; font-weight: bold; cursor: pointer; color: #ffffff; font-size: 18px; padding: 0;">&#8211;</button>
+                    <button title="Maximize" style="width: 24px; height: 24px; background: #4b4b4b; border: 1px solid #ffffff; border-radius: 2px; font-weight: bold; cursor: pointer; color: #ffffff; font-size: 16px; padding: 0;">&#9633;</button>
+                    <button title="Close" style="width: 24px; height: 24px; background: #ee0a3c; border: 1px solid #fff; border-radius: 2px; font-weight: bold; color: #fff; cursor: pointer; font-size: 18px; padding: 0;">&#10005;</button>
+                </div>
+            </div>
+
+            <!-- Toolbar -->
+            <div style="background: #181818; border-bottom: 1px solid #ff69b4; height: 36px; display: flex; align-items: center; padding: 0 12px;">
+                <button style="background: #0a0a0a; border: 1px solid #ff69b4; border-radius: 2px; margin-right: 4px; padding: 4px 12px; cursor: pointer; color: #ff69b4; font-family: 'Roboto Mono', monospace;">Back</button>
+                <button style="background: #0a0a0a; border: 1px solid #ff69b4; border-radius: 2px; margin-right: 4px; padding: 4px 12px; cursor: pointer; color: #ff69b4; font-family: 'Roboto Mono', monospace;">Forward</button>
+                <button style="background: #0a0a0a; border: 1px solid #ff69b4; border-radius: 2px; margin-right: 12px; padding: 4px 12px; cursor: pointer; color: #ff69b4; font-family: 'Roboto Mono', monospace;">Refresh</button>
+                <input type="text" value="https://Johnna's_Mixtape.com" style="flex: 1; border: 1px solid #ff69b4; border-radius: 2px; padding: 6px; margin-right: 8px; background: #181818; color: #ffe0f7; font-family: 'Roboto Mono', monospace;">
+                <button style="background: #0a0a0a; border: 1px solid #ff69b4; border-radius: 2px; padding: 4px 12px; cursor: pointer; color: #ff69b4; font-family: 'Roboto Mono', monospace;">Go</button>
+            </div>
+
+            <!-- Moving Text Marquee -->
+            <div style="overflow: hidden; background: #181818; border-bottom: 1px solid #ff69b4; height: 32px; position: relative;">
+                <div id="movingText" style="white-space: nowrap; position: absolute; left: 0; top: 0; color: #ffffff; font-family: 'Roboto Mono', monospace; font-size: 1.1em; height: 32px; display: flex; align-items: center;">
+                    Welcome to Johnna's Teenage Mixtape! Discover my hobbies, preferences, goals, skills, quirks, and motto!
+                </div>
+            </div>
+            
+            <script>
+                // marquee effect
+                const movingText = document.getElementById('movingText');
+                let pos = 0;
+                function animateMarquee() {
+                    pos += 2;
+                    if (pos > movingText.parentElement.offsetWidth) {
+                        pos = -movingText.offsetWidth;
+                    }
+                    movingText.style.left = pos + 'px';
+                    requestAnimationFrame(animateMarquee);
+                }
+                animateMarquee();
+            </script>
+
+            <!-- Main Flex Layout -->
+            <div style="display: flex; min-height: 700px;">
+                <!-- Sidebar -->
+                <div style="background: url('MenuSidebarBackground.png') no-repeat center center / cover #181818; border-right: 1px solid #ff69b4; padding: 24px 0 24px 0; width: 220px; display: flex; flex-direction: column; align-items: flex-start;">
+                    <div style="display: flex; flex-direction: column; gap: 18px; width: 100%; padding-left: 18px;">
+                        <div class="menu-item" style="position: relative;">
+                            <button onclick="showMenuContent('hobbies')" style="background: #ff69b4; color: #181818; border: 5px solid #ffffff; border-radius: 4px; padding: 8px 18px; font-family: 'Roboto Mono', monospace; font-weight: bold; cursor: pointer; width: 160px; text-align: left;">Hobbies</button>
+                        </div>
+                        <div class="menu-item" style="position: relative;">
+                            <button onclick="showMenuContent('preferences')" style="background: #ff69b4; color: #181818; border: 5px solid #ffffff; border-radius: 4px; padding: 8px 18px; font-family: 'Roboto Mono', monospace; font-weight: bold; cursor: pointer; width: 160px; text-align: left;">Preferences</button>
+                        </div>
+                        <div class="menu-item" style="position: relative;">
+                            <button onclick="showMenuContent('goals')" style="background: #ff69b4; color: #181818; border: 5px solid #ffffff; border-radius: 4px; padding: 8px 18px; font-family: 'Roboto Mono', monospace; font-weight: bold; cursor: pointer; width: 160px; text-align: left;">Goals</button>
+                        </div>
+                        <div class="menu-item" style="position: relative;">
+                            <button onclick="showMenuContent('skills')" style="background: #ff69b4; color: #181818; border: 5px solid #ffffff; border-radius: 4px; padding: 8px 18px; font-family: 'Roboto Mono', monospace; font-weight: bold; cursor: pointer; width: 160px; text-align: left;">Skills</button>
+                        </div>
+                        <div class="menu-item" style="position: relative;">
+                            <button onclick="showMenuContent('quirks')" style="background: #ff69b4; color: #181818; border: 5px solid #ffffff; border-radius: 4px; padding: 8px 18px; font-family: 'Roboto Mono', monospace; font-weight: bold; cursor: pointer; width: 160px; text-align: left;">Quirks</button>
+                        </div>
+                        <div class="menu-item" style="position: relative;">
+                            <button onclick="showMenuContent('motto')" style="background: #ff69b4; color: #181818; border: 5px solid #ffffff; border-radius: 4px; padding: 8px 18px; font-family: 'Roboto Mono', monospace; font-weight: bold; cursor: pointer; width: 160px; text-align: left;">Motto</button>
+                        </div>
+                        <div class="menu-item" style="position: relative;">
+                           
+                                
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Main Content Area -->
+                 
+                <div style="flex: 1; padding: 32px;">        
+
+<h1 style="color: #ff69b4; font-family: 'UnifrakturCook', serif; font-size: 2.5em; text-shadow: 2px 2px 12px #c2185b;">Welcome to Johnna's Teenage Mixtape</h1>
+                     <img src="Sticker2.PNG" alt="Sticker Collection" style="background-color: none;"align="right" width="300px">  
+
+                     
+                  
+                    <p style="font-size: 1.2em; color: #ffe0f7; font-family: 'Roboto Mono', monospace; margin-bottom: 32px;">
+                        This is a collection of who I am in my teenage years.<br>
+                        <span style="color: #ff69b4;">Enjoy the nostalgia!</span>
+                       
+                    </p>
+                
+        <img src="Sepultura.jpg" style="width: 260px; border: 2px solid #ff69b4; display: block; margin: 0 auto "align="left"> 
+<div style="margin: 32px auto 0 auto; max-width: 420px; background: rgba(24,24,24,0.85); border: 2px solid #ff69b4; border-radius: 8px; box-shadow: 0 0 8px #ff69b4; padding: 24px; color: #ffe0f7; font-family: 'Roboto Mono', monospace; font-size: 1.25em;"><b>About Me</b></h3> <img src="Nomusicnolife.png" alt="Sticker Collection" style="background-color: none;"align="right" width="100px">
+    <h3 style="color: #ff69b4; font-family: 'UnifrakturCook', serif; margin-top: 0; font-size: 1.5em;"><b>About Me</b></h3> 
+    <ul style="list-style: none; padding-left: 0; margin: 0;">
+        <li><b>Name:</b> Johnna Carling</li>
+        <li><b>Birthday:</b> July 13</li>
+        <li><b>Age:</b> 17</li>
+        <li><b>Vibe:</b> Half chaos, half daydream</li>
+        <li><b>Soundtrack:</b> Alt rock, pop-punk, emo, and songs that make you wanna scream in your room</li>
+        <li><b>Aesthetic:</b> Smudged eyeliner, thrift store finds, band tees, late-night thoughts</li>
+    </ul>
+    
+</div>
+
+<p style="font-size: 35px">🕷️ “Currently surviving high school with caffeine & sarcasm."</p>
+<h style="font-size: 45px;">Photo dump:</h><br>
+<div style="display: flex; justify-content: space-between; align-items: center; margin: 20px;">
+  <img src="Photodump/Baby.JPG" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+
+  <img src="Photodump/Baby2.JPG" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+
+  <img src="Photodump/Baby3.JPEG" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin: 20px;">
+  <img src="Photodump/Child.jpg" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+
+  <img src="Photodump/Child2.jpg" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+
+  <img src="Photodump/Child3.JPG" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin: 20px;">
+  <img src="Photodump/Plant.JPG" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+
+  <img src="Photodump/4.jpg" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+
+  <img src="Photodump/6.jpg" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+</div>
+
+<div style="display: flex; justify-content: space-between; align-items: center; margin: 20px;">
+  <img src="Photodump/1.JPG" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+
+  <img src="Photodump/2.JPG" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+
+  <img src="Photodump/3.JPG" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; margin: 20px;">
+  <img src="Photodump/5.jpg" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+  <img src="Photodump/FOod.JPG" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+
+  <img src="Photodump/Fairy.jpg" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin: 20px;">
+  <img src="Photodump/7.PNG" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+  <img src="Photodump/8.jpg" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+
+  <img src="Photodump/9.jpg" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+    </div>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin: 20px;">
+  <img src="Photodump/10.jpg" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+  <img src="Photodump/11.jpg" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+
+  <img src="Photodump/12.jpg" alt="Me" 
+    style="width: 300px; border: 2px solid #ff69b4; 
+    border-radius: 8px; box-shadow: 0 0 12px #ff69b4;">
+    </div>
+    
+</div>
+            </div>
+        </div>
+        <!-- 2nd Browser Tab-->
+        <div id="movableBrowser" style="width: 28vw; margin: 0; border: 2px solid #ff69b4; box-shadow: 0 0 24px #ff69b4; background: #181818; position: absolute; top: 60px; right: 32px; cursor: move; z-index: 2000;">
+            <div id="dragHandle" style="background: linear-gradient(to bottom, #ff69b4 0%, #c2185b 100%); height: 40px; border-bottom: 2px solid #ff69b4; position: relative; color: #fff; display: flex; align-items: center; font-family: 'UnifrakturCook', serif; cursor: move;">
+                <img src="Explorericon.jpg" style="width: 24px; height: 24px; margin: 0 12px;">
+                <span style="font-weight: bold; font-size: 22px; flex: 1; letter-spacing: 2px; text-shadow: 2px 2px 8px #c2185b;">Menu Screen</span>
+            </div>
+            <div id="menuScreen" style="padding: 32px; min-height: 400px; color: #ffe0f7; font-family: 'Roboto Mono', monospace; overflow-y: auto; max-height: 70vh;">
+                <p>↑This screen is movable."hold the pink bar and move"</p>
+                <p>Select an item on the left.</p>
+                <img id="menuPhoto" src="" alt="" style="max-width: 100%; margin-top: 24px; border: 2px solid #ff69b4; display: none;">
+            </div>
+        </div>
+    </div>
+    <!-- Music Player -->
+    <div style="position: fixed; bottom: 32px; right: 32px; z-index: 1000;">
+        <div style="background: #181818; border: 2px solid #ff69b4; border-radius: 8px; box-shadow: 0 0 12px #ff69b4; padding: 16px; display: flex; align-items: center; gap: 12px;">
+            <!-- Vinyl -->
+            <div style="width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;">
+                <img id="vinyl" src="vinyl.png" alt="Spinning Vinyl" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid #ff69b4; animation: spin 2s linear infinite;"/>
+            </div>
+            <p class="music-title" style="font: 1em sans-serif;">Lash - Take Me Away</p>
+            <audio id="bgMusic" src="Music\Lash - Take Me Away.mp3" loop autoplay></audio>
+            <button onclick="playMusic()" style="background: #ff69b4; color: #181818; border: none; border-radius: 4px; padding: 8px 16px; font-family: 'Roboto Mono', monospace; font-weight: bold; cursor: pointer;">Play</button>
+            <button onclick="stopMusic()" style="background: #181818; color: #ff69b4; border: 1px solid #ff69b4; border-radius: 4px; padding: 8px 16px; font-family: 'Roboto Mono', monospace; font-weight: bold; cursor: pointer;">Stop</button>
+            <!-- Slider -->
+            <input type="range" id="musicSlider" min="0" value="0" step="1" style="width: 120px;">
+            <span id="musicTime" style="color: #ffe0f7; font-family: 'Roboto Mono', monospace; font-size: 0.95em;">0:00 / 0:00</span>
+        </div>
+    </div>
+    <div style="position: fixed; bottom: 120px; right: 32px; z-index: 1001; width: 340px;">
+        <div style="background: #181818; border: 2px solid #ff69b4; border-radius: 8px; box-shadow: 0 0 12px #ff69b4; padding: 16px;">
+            <h4 style="color: #ff69b4; font-family: 'UnifrakturCook', serif; margin: 0 0 12px 0; font-size: 1.3em;">Johnna's Playlist</h4>
+            <select id="playlistSelect" style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ff69b4; background: #181818; color: #ffe0f7; font-family: 'Roboto Mono', monospace; font-size: 1em;">
+                <option value="Music\Lash - Take Me Away.mp3">Lash - Take Me Away</option>
+                <option value="Music\Hoobastank - The Reason.mp3">Hoobastank - The Reason</option>
+                <option value="Music\Avril Lavigne - Smile.mp3">Avril Lavigne - Smile</option>
+
+            </select>
+        </div>
+    </div>
+    <style>
+    @keyframes spin {
+        100% { transform: rotate(360deg); }
+    }
+    </style>
+    <script>
+    function playMusic() {
+        const audio = document.getElementById('bgMusic');
+        audio.play();
+        document.getElementById('vinyl').style.animationPlayState = 'running';
+    }
+    function stopMusic() {
+        const audio = document.getElementById('bgMusic');
+        audio.pause();
+        document.getElementById('vinyl').style.animationPlayState = 'paused';
+    }
+    window.onload = function() {
+        const audio = document.getElementById('bgMusic');
+        const vinyl = document.getElementById('vinyl');
+        const slider = document.getElementById('musicSlider');
+        const timeLabel = document.getElementById('musicTime');
+
+      
+        audio.play().then(() => {
+            vinyl.style.animationPlayState = 'running';
+        }).catch(() => {
+            vinyl.style.animationPlayState = 'paused';
+        });
+
+        // Update slider max when metadata is loaded
+        audio.addEventListener('loadedmetadata', function() {
+            slider.max = Math.floor(audio.duration);
+            updateTime();
+        });
+
+        // Update slider and time as music plays
+        audio.addEventListener('timeupdate', function() {
+            slider.value = Math.floor(audio.currentTime);
+            updateTime();
+        });
+
+        // Seek music when slider is changed
+        slider.addEventListener('input', function() {
+            audio.currentTime = slider.value;
+            updateTime();
+        });
+
+        // Pause vinyl when music is paused
+        audio.addEventListener('pause', function() {
+            vinyl.style.animationPlayState = 'paused';
+        });
+
+        // Resume vinyl when music plays
+        audio.addEventListener('play', function() {
+            vinyl.style.animationPlayState = 'running';
+        });
+
+        function updateTime() {
+            let current = Math.floor(audio.currentTime);
+            let total = Math.floor(audio.duration);
+            timeLabel.textContent = formatTime(current) + ' / ' + formatTime(total);
+        }
+        function formatTime(sec) {
+            if (isNaN(sec)) return '0:00';
+            let m = Math.floor(sec / 60);
+            let s = sec % 60;
+            return m + ':' + (s < 10 ? '0' : '') + s;
+        }
+    };
+    </script>
+    <script>
+        function showMenuContent(menu) {
+            const menuScreen = document.getElementById('menuScreen');
+            let content = '';
+            let photoSrc = '';
+            let photoAlt = '';
+            switch(menu) {
+                case 'hobbies':
+                    content = `<h2 style="color:#ff69b4;">Hobbies</h2>
+                        <ul>
+                            <li>Listening to music</li>
+                            <img src="redhotchillipeppers.jpg" alt="Listening to Music" style="max-width:100%; margin-top:8px; border:2px solid #ff69b4; border-radius:6px;">
+                            <li>Playing drums<br>
+                                <video src="Drums.mp4" controls style="max-width:100%; margin-top:8px; border:2px solid #ff69b4; border-radius:6px;"></video>
+                            </li>
+                            <li>Playing Roblox<br>
+                                <img src="Roblox.jpg" alt="Playing Roblox" style="max-width:100%; margin-top:8px; border:2px solid #ff69b4; border-radius:6px;">
+                            </li>
+                            <li>Doing my makeup<br>
+                                <video src="makeup.mp4" controls style="max-width:100%; margin-top:8px; border:2px solid #ff69b4; border-radius:6px;"></video>
+                            </li>
+                            <li>Watching Movies<br>
+                                <img src="Netflix.jpg" alt="Watching Movies" style="max-width:100%; margin-top:8px; border:2px solid #ff69b4; border-radius:6px;">
+                            </li>
+                        </ul>`;
+                    break;
+                case 'preferences':
+                    content = `<h2 style="color:#ff69b4;">Preferences</h2>
+                        <ul>
+                            <b>Likes</b>
+                            <li>⭐️ Spicy foods</li>
+                            <li>⭐️Chocolate Mint Chip Ice Cream</li>
+                            <li>⭐️Strawberry Milk</li>
+                            <li>⭐️Oversized Clothes</li>
+                            <li>⭐️Jewelries</li>
+                            <li>⭐️Going to the Beach</li>
+                            <li>⭐️Iced Coffee</li>
+                            <li>⭐️Pets</li>
+                            <li>⭐️Seafoods</li>
+                        </ul>
+                        <ul>
+                            <b>Dislikes</b>
+                            <li>❎ Waking up too early</li>
+                            <li>❎ Waiting too long</li>
+                            <li>❎ Matcha</li>
+                            <li>❎ Homeworks</li>
+                            <li>❎ Dresses</li>
+                            <li>❎ Last - minute cancellation </li>
+                            <li>❎ Religious Bigots</li>
+                            <li>❎ Rats</li>
+                            <li>❎ Boring Lectures
+</li>
+                        </ul>`;
+                        
+                    break;
+                case 'goals':
+                    content = `<h2 style="color:#ff69b4;">Goals</h2>
+                       
+                        <div style="margin-top:24px;">
+                            <span style="font-size:1.15em; color:#ff69b4;"><b>⚡ Short-Term Goals (Next Chapter)</b></span>
+                            <ul style="margin-top:8px;">
+                                <li>Survive senior year without fully losing my mind</li>
+                                <li>Make a playlist that actually feels like me</li>
+                                <li>Learn how to thrift the perfect band tee</li>
+                                <li>Keep up with journaling</li>
+                                <li>Drink more water than iced coffee</li>
+                                <li>Do something spontaneous before 18</li>
+                            </ul>
+                            <div style="border-bottom:1px solid #ff69b4; margin:16px 0;"></div>
+                            <span style="font-size:1.15em; color:#ff69b4;"><b>🌙 Long-Term Goals (Spoilers Ahead)</b></span>
+                            <ul style="margin-top:8px;">
+                                <li>Graduate</li>
+                                <li>Travel everywhere</li>
+                                <li>Stay true to my vibe no matter what people say</li>
+                                <li>Create something that actually matters (art, writing, music, anything)</li>
+                                <li>Build a life that feels like mine, not just what’s expected</li>
+                                <li>Never forget the teenage me</li>
+                            </ul>
+                        </div>`;
+                    photoSrc = 'Goals.JPG';
+                    break;
+                case 'skills':
+                    content = `<h2 style="color:#ff69b4;">Skills</h2>
+                        <ul>
+                            <li>Critical Thinker</li>
+                            <li>Creative</li>
+                            <li>Drums</li>
+                        </ul>`;
+                    photoSrc = 'Drums.jpg';
+                    
+                    break;
+                case 'quirks':
+                    content = `<h2 style="color:#ff69b4;">Quirks</h2>
+                        <ul>
+                            <li>Laughs at own jokes</li>
+                            <li>Collects stickers</li>
+                            <li>Being my Authentic self</li>
+                        </ul>`;
+                    photoSrc = 'Quirks.jpg';
+                    break;
+                case 'motto':
+                    content = `<h2 style="color:#ff69b4;">Motto</h2>
+                        <p>""Success comes from free thought, not from forced ideology."</p>`;
+                    photoSrc = 'Motto.jpg';
+                    break;
+                default:
+                   
+            }
+            menuScreen.innerHTML = content + `<img id="menuPhoto" src="${photoSrc}" alt="${photoAlt}" style="max-width: 100%; margin-top: 24px; border: 2px solid #ff69b4;${photoSrc ? '' : 'display:none;'}">`;
+        }
+    </script>
+    <script>
+// Movable browser logic
+const movable = document.getElementById('movableBrowser');
+const dragHandle = document.getElementById('dragHandle');
+let isDragging = false, offsetX = 0, offsetY = 0;
+
+dragHandle.addEventListener('mousedown', function(e) {
+    isDragging = true;
+    offsetX = e.clientX - movable.offsetLeft;
+    offsetY = e.clientY - movable.offsetTop;
+    document.body.style.userSelect = 'none';
+});
+
+document.addEventListener('mousemove', function(e) {
+    if (isDragging) {
+        movable.style.left = (e.clientX - offsetX) + 'px';
+        movable.style.top = (e.clientY - offsetY) + 'px';
+    }
+});
+
+document.addEventListener('mouseup', function() {
+    isDragging = false;
+    document.body.style.userSelect = '';
+});
+</script>
+<script>
+    // Playlist logic
+    const playlistSelect = document.getElementById('playlistSelect');
+    const audio = document.getElementById('bgMusic');
+    const vinyl = document.getElementById('vinyl');
+
+    playlistSelect.addEventListener('change', function() {
+        audio.src = playlistSelect.value;
+        audio.load();
+        audio.play();
+        vinyl.style.animationPlayState = 'running';
+        // Update song name
+        document.querySelector('.music-title').textContent = playlistSelect.options[playlistSelect.selectedIndex].text;
+    });
+</script>
+</body>
+</html>
